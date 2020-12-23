@@ -15,6 +15,8 @@
 		86F760A12593355900CAEF1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86F7609F2593355900CAEF1A /* LaunchScreen.storyboard */; };
 		86F760AC2593355A00CAEF1A /* AnimeAndMangaViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760AB2593355A00CAEF1A /* AnimeAndMangaViewerTests.swift */; };
 		86F760B72593355A00CAEF1A /* AnimeAndMangaViewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760B62593355A00CAEF1A /* AnimeAndMangaViewerUITests.swift */; };
+		86F760C9259339C900CAEF1A /* WelcomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760C8259339C900CAEF1A /* WelcomeModel.swift */; };
+		86F760CF25933B5900CAEF1A /* TopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760CE25933B5900CAEF1A /* TopModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		86F760B22593355A00CAEF1A /* AnimeAndMangaViewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimeAndMangaViewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F760B62593355A00CAEF1A /* AnimeAndMangaViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeAndMangaViewerUITests.swift; sourceTree = "<group>"; };
 		86F760B82593355A00CAEF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86F760C8259339C900CAEF1A /* WelcomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModel.swift; sourceTree = "<group>"; };
+		86F760CE25933B5900CAEF1A /* TopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		86F760932593355700CAEF1A /* AnimeAndMangaViewer */ = {
 			isa = PBXGroup;
 			children = (
+				86F760C72593394C00CAEF1A /* Model */,
 				86F760942593355700CAEF1A /* AppDelegate.swift */,
 				86F760962593355700CAEF1A /* SceneDelegate.swift */,
 				86F760982593355700CAEF1A /* ViewController.swift */,
@@ -126,6 +131,23 @@
 				86F760B82593355A00CAEF1A /* Info.plist */,
 			);
 			path = AnimeAndMangaViewerUITests;
+			sourceTree = "<group>";
+		};
+		86F760C72593394C00CAEF1A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86F760C8259339C900CAEF1A /* WelcomeModel.swift */,
+				86F760CD25933B0900CAEF1A /* TopModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86F760CD25933B0900CAEF1A /* TopModel */ = {
+			isa = PBXGroup;
+			children = (
+				86F760CE25933B5900CAEF1A /* TopModel.swift */,
+			);
+			path = TopModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				86F760992593355700CAEF1A /* ViewController.swift in Sources */,
+				86F760C9259339C900CAEF1A /* WelcomeModel.swift in Sources */,
 				86F760952593355700CAEF1A /* AppDelegate.swift in Sources */,
+				86F760CF25933B5900CAEF1A /* TopModel.swift in Sources */,
 				86F760972593355700CAEF1A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
