@@ -39,12 +39,13 @@ extension ContentTableViewCellViewModel {
         guard let string = model.imageUrl else { return nil }
         return URL(string: string)
     }
-    var title: String { model.title }
-    var rank: String { "\(model.rank)" }
-    var startDate: String? { model.startDate }
-    var endDate: String? { model.endDate }
-    var type: String { model.type }
+    var title: String { "title: " + model.title }
+    var rank: String { "rank: \(model.rank)" }
+    var startDate: String { "startDate: " + (model.startDate ?? "--") }
+    var endDate: String { "endDate: " + (model.endDate ?? "--") }
+    var type: String { "type: " + model.type }
     var urlString: String? { model.url }
+    var malId: String { "malId: \(model.malId)" }
     
     func favoriteAction() {
         favoriteStore = !favoriteStore

@@ -17,6 +17,7 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet private weak var endDate: UILabel!
     @IBOutlet private weak var type: UILabel!
     @IBOutlet private weak var urlBtn: UIButton!
+    @IBOutlet private weak var malId: UILabel!
     
     private var viewModel: ContentTableViewCellViewModel?
     
@@ -40,9 +41,10 @@ extension ContentTableViewCell {
         img.kf.setImage(with: viewModel.imgUrl)
         title.text = viewModel.title
         rank.text = viewModel.rank
-        startDate.text = viewModel.startDate ?? "--"
-        endDate.text = viewModel.endDate ?? "--"
+        startDate.text = viewModel.startDate
+        endDate.text = viewModel.endDate
         type.text = viewModel.type
         urlBtn.setTitle(viewModel.urlString, for: .normal)
+        malId.text = viewModel.malId
     }
 }
