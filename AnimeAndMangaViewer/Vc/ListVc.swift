@@ -13,7 +13,7 @@ enum ListVcState {
 
 class ListVc: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,18 +30,18 @@ class ListVc: UIViewController {
 }
 
 extension ListVc {
-    
+
     func setupViewModel(_ viewModel: ContentViewModel) {
         self.viewModel = viewModel
     }
 }
 
 extension ListVc: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel?.numberOfRow ?? .zero
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         viewModel?.loadMore(indexPath: indexPath)
         guard
@@ -58,7 +58,7 @@ extension ListVc: UITableViewDataSource {
 }
 
 private extension ListVc {
-    
+
     func setupTableView() {
         let nib = UINib(nibName: "ContentTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: ContentTableViewCellViewModel.cellId)
@@ -81,7 +81,7 @@ private extension ListVc {
             }
         }
     }
-    
+
     func showAlert(msg: String) {
         let alert = UIAlertController(title: "錯誤", message: msg, preferredStyle: .alert)
         let ok = UIAlertAction(title: "確認", style: .cancel, handler: nil)

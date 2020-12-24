@@ -14,7 +14,6 @@ enum NetworkError: Error {
     case invalidData
 }
 
-
 struct ApiService {
     static func request(
         task: TaskSpec,

@@ -21,7 +21,7 @@ class ContentTableViewCellViewModel {
         self.model = model
         self.delegate = delegate
     }
-    
+
     private let model: TopModel
     private var favoriteStore = false
     private weak var delegate: ContentTableViewCellViewModelDelegate?
@@ -30,15 +30,9 @@ class ContentTableViewCellViewModel {
 extension ContentTableViewCellViewModel {
     static var cellType: AnyClass? { ContentTableViewCell.self }
     static var cellId: String { "ContentTableViewCell" }
-    
+
     var cellType: AnyClass? { ContentTableViewCell.self }
     var cellId: String { "ContentTableViewCell" }
-    
-    
-    var imgUrl: URL? {
-        guard let string = model.imageUrl else { return nil }
-        return URL(string: string)
-    }
     var title: String { "title: " + model.title }
     var rank: String { "rank: \(model.rank)" }
     var startDate: String { "startDate: " + (model.startDate ?? "--") }
@@ -46,12 +40,16 @@ extension ContentTableViewCellViewModel {
     var type: String { "type: " + model.type }
     var urlString: String? { model.url }
     var malId: String { "malId: \(model.malId)" }
-    
+    var imgUrl: URL? {
+        guard let string = model.imageUrl else { return nil }
+        return URL(string: string)
+    }
+
     func favoriteAction() {
         favoriteStore = !favoriteStore
         isFavorite?(favoriteStore)
     }
-    
+
     func urlAction() {
         guard let string = model.url?.addingPercentEncoding(withAllowedCharacters: .alphanumerics)?.removingPercentEncoding else { return }
         let url = URL(string: string)

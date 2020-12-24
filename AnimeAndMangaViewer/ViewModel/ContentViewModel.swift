@@ -10,11 +10,11 @@ import Foundation
 class ContentViewModel {
     private let model: ContentModel
     private weak var delegate: ContentTableViewCellViewModelDelegate?
-    private let repo = ApiRepository()
+    private let repo: ApiRepository
     private var data: [TopModel] = []
     private var isLoading: LoadState = LoadState.normal
     private var retryIndex: Int?
-    
+
     var observeViewState:((ListVcState) -> ())? {
         didSet {
             reset()
@@ -22,8 +22,11 @@ class ContentViewModel {
         }
     }
 
-    init(model: ContentModel, delegate: ContentTableViewCellViewModelDelegate?) {
+    init(model: ContentModel,
+         apiRepo: ApiRepository,
+         delegate: ContentTableViewCellViewModelDelegate?) {
         self.model = model
+        self.repo = apiRepo
         self.delegate = delegate
     }
 }
@@ -50,7 +53,7 @@ extension ContentViewModel {
         guard let retryIndex = retryIndex else { return }
         loadData(page: retryIndex)
     }
-    
+
     func subViewModel(indexPath: IndexPath) -> ContentTableViewCellViewModel {
         guard data.count > indexPath.row else {
             return ContentTableViewCellViewModel(model: TopModel.dummyModel, delegate: delegate)

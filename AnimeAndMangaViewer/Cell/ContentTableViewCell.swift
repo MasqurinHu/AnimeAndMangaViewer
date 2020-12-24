@@ -18,20 +18,20 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet private weak var type: UILabel!
     @IBOutlet private weak var urlBtn: UIButton!
     @IBOutlet private weak var malId: UILabel!
-    
+
     private var viewModel: ContentTableViewCellViewModel?
-    
+
     @IBAction func favoriteAction(_ sender: Any) {
         viewModel?.favoriteAction()
     }
-    
+
     @IBAction func urlAction(_ sender: Any) {
         viewModel?.urlAction()
     }
 }
 
 extension ContentTableViewCell {
-    
+
     func setupViewModel(_ viewModel: ContentTableViewCellViewModel) {
         self.viewModel = viewModel
         viewModel.isFavorite = { [weak self] isFavorite in

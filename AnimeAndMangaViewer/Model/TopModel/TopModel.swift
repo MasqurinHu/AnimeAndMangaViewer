@@ -16,7 +16,7 @@ struct TopModel: Decodable {
     let endDate: String?
     let type: String
     let url: String?
-    
+
     static let dummyModel = TopModel(
         malId: 1,
         imageUrl: "https://img.ttshow.tw/images/media/uploads/2019/11/28/d1654223.jpg",

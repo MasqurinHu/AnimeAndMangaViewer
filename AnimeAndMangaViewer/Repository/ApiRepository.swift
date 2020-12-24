@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct ApiRepository {}
+struct ApiRepository {
+    private let dataSource: ApiDataSourceSpec
+
+    init(dataSource: ApiDataSourceSpec) {
+        self.dataSource = dataSource
+    }
+}
 
 extension ApiRepository {
 
@@ -16,8 +22,7 @@ extension ApiRepository {
         page: Int,
         doneHandle: @escaping ((Result<[TopModel], Error>) -> Void)) {
 
-        let task = TopTask(model: model, page: page)
-        ApiService.request(task: task) { result in
+        dataSource.fetchTop(model: model, page: page) { result in
             switch result {
             case .success(let data):
                 let decoder = JSONDecoder()

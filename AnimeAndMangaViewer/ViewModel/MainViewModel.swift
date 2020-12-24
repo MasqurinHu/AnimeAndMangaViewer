@@ -11,12 +11,12 @@ class MainViewModel {}
 
 extension MainViewModel {
     var numberOfType: Int { JikanType.allCases.count }
-    
+
     func typeTitle(indexPath: IndexPath) -> String {
         guard indexPath.row < JikanType.allCases.count else { return "" }
         return JikanType.allCases[indexPath.row].rawValue
     }
-    
+
     func getType(indexPath: IndexPath) -> JikanType? {
         guard JikanType.allCases.count > indexPath.row else { return nil }
         return JikanType.allCases[indexPath.row]
