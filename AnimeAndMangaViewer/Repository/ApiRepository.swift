@@ -22,12 +22,6 @@ extension ApiRepository {
             case .success(let data):
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                do {
-                    let mmm = try decoder.decode(Welcome<TopModel>.self, from: data)
-                }
-                catch {
-                    print(error)
-                }
                 guard let model = try? decoder.decode(Welcome<TopModel>.self, from: data) else {
                     let string = String(data:data, encoding: .utf8)
                     doneHandle(.failure(NetworkError.decodeError(string)))
