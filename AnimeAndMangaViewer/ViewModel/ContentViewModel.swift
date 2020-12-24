@@ -15,7 +15,7 @@ class ContentViewModel {
     private var isLoading: LoadState = LoadState.normal
     private var retryIndex: Int?
     
-    var needReloadData:((ListVcState) -> ())? {
+    var observeViewState:((ListVcState) -> ())? {
         didSet {
             reset()
             loadData(page: startIndex)
@@ -70,7 +70,7 @@ private extension ContentViewModel {
     }
 
     func loadData(page: Int) {
-        needReloadData?(ListVcState.firstLoading)
+        observeViewState?(ListVcState.loading)
         isLoading = LoadState.loading
         repo.fetchTop(model: model, page: page) { [weak self] result in
             self?.isLoading = LoadState.normal
@@ -79,13 +79,13 @@ private extension ContentViewModel {
             case .success(let data):
                 self.retryIndex = nil
                 self.data += data
-                self.needReloadData?(ListVcState.loadDone)
+                self.observeViewState?(ListVcState.loadDone)
                 if Float(data.count).truncatingRemainder(dividingBy: Float(self.offset)) != 0 {
                     self.isLoading = LoadState.finish
                 }
             case .failure(let error):
                 self.retryIndex = page
-                self.needReloadData?(ListVcState.loadFail(error.localizedDescription))
+                self.observeViewState?(ListVcState.loadFail(error.localizedDescription))
             }
             self.isLoading = LoadState.normal
         }

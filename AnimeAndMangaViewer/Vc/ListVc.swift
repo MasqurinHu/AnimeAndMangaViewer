@@ -8,7 +8,7 @@
 import UIKit
 
 enum ListVcState {
-    case firstLoading, loadDone, loadFail(String)
+    case loading, loadDone, loadFail(String)
 }
 
 class ListVc: UIViewController {
@@ -66,10 +66,10 @@ private extension ListVc {
     }
 
     func bindViewModel() {
-        viewModel?.needReloadData = { [weak self] vcState in
+        viewModel?.observeViewState = { [weak self] vcState in
             DispatchQueue.main.async { [weak self] in
                 switch vcState {
-                case .firstLoading:
+                case .loading:
                     self?.loadingView.startAnimating()
                 case .loadDone:
                     self?.loadingView.stopAnimating()
