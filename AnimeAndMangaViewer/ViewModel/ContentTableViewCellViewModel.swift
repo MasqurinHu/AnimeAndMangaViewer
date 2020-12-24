@@ -14,7 +14,7 @@ protocol ContentTableViewCellViewModelDelegate: AnyObject {
 class ContentTableViewCellViewModel {
     var isFavorite: ((Bool) -> Void)? {
         didSet {
-            isFavorite?(favoiteStore)
+            isFavorite?(favoriteStore)
         }
     }
     init(model: TopModel, delegate: ContentTableViewCellViewModelDelegate?) {
@@ -23,7 +23,7 @@ class ContentTableViewCellViewModel {
     }
     
     private let model: TopModel
-    private var favoiteStore = false
+    private var favoriteStore = false
     private weak var delegate: ContentTableViewCellViewModelDelegate?
 }
 
@@ -35,20 +35,25 @@ extension ContentTableViewCellViewModel {
     var cellId: String { "ContentTableViewCell" }
     
     
-    var imgUrl: URL? { model.imageURL }
+    var imgUrl: URL? {
+        guard let string = model.imageUrl else { return nil }
+        return URL(string: string)
+    }
     var title: String { model.title }
     var rank: String { "\(model.rank)" }
     var startDate: String? { model.startDate }
     var endDate: String? { model.endDate }
     var type: String { model.type }
-    var urlString: String? { model.url?.absoluteString }
+    var urlString: String? { model.url }
     
     func favoriteAction() {
-        favoiteStore = !favoiteStore
-        isFavorite?(favoiteStore)
+        favoriteStore = !favoriteStore
+        isFavorite?(favoriteStore)
     }
     
     func urlAction() {
-        delegate?.showWebView(url: model.url)
+        guard let string = model.url?.addingPercentEncoding(withAllowedCharacters: .alphanumerics)?.removingPercentEncoding else { return }
+        let url = URL(string: string)
+        delegate?.showWebView(url: url)
     }
 }

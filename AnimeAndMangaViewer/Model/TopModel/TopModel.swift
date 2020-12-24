@@ -8,20 +8,20 @@
 import Foundation
 
 struct TopModel: Decodable {
-    let imageURL: URL?
+    let imageUrl: String?
     let title: String
     let rank: Int
     let startDate: String?
     let endDate: String?
     let type: String
-    let url: URL?
+    let url: String?
     
     static let dummyModel = TopModel(
-        imageURL: URL(string: "https://img.ttshow.tw/images/media/uploads/2019/11/28/d1654223.jpg"),
+        imageUrl: "https://img.ttshow.tw/images/media/uploads/2019/11/28/d1654223.jpg",
         title: "Dr. Stone: Stone Wars",
         rank: 1,
         startDate: "Jan 2021",
         endDate: nil,
-        type: "TV", url: URL(string: "https://myanimelist.net/anime/40852/Dr_Stone__Stone_Wars"))
+        type: "TV", url: "https://myanimelist.net/anime/40852/Dr_Stone__Stone_Wars")
 }
 

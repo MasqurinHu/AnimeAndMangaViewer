@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Welcome<T: Codable>: Decodable {
+struct Welcome<T: Decodable>: Decodable {
     let requestHash: String
     let requestCached: Bool
     let requestCacheExpiry: Int

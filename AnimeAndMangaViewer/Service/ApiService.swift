@@ -9,6 +9,7 @@ import Foundation
 
 enum NetworkError: Error {
     case invalidUrl(String)
+    case decodeError(String?)
     case requestFailed(Error)
     case invalidData
 }
