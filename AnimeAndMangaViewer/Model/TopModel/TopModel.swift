@@ -7,30 +7,21 @@
 
 import Foundation
 
-// MARK: - AnimeModel
-struct AnimeModel: TopModelSpec {
-    let malID, rank: Int
+struct TopModel: Decodable {
+    let imageURL: URL?
     let title: String
-    let url: String
-    let imageURL: String
-    let type: String
-    let episodes: Int?
+    let rank: Int
     let startDate: String?
     let endDate: String?
-    let members: Int
-    let score: Double
+    let type: String
+    let url: URL?
+    
+    static let dummyModel = TopModel(
+        imageURL: URL(string: "https://img.ttshow.tw/images/media/uploads/2019/11/28/d1654223.jpg"),
+        title: "Dr. Stone: Stone Wars",
+        rank: 1,
+        startDate: "Jan 2021",
+        endDate: nil,
+        type: "TV", url: URL(string: "https://myanimelist.net/anime/40852/Dr_Stone__Stone_Wars"))
 }
 
-// MARK: - MongaModel
-struct MongaModel: TopModelSpec {
-    let malID, rank: Int
-    let title: String
-    let url: String
-    let imageURL: String
-    let type: String
-    let volumes: Int?
-    let startDate: String?
-    let endDate: String?
-    let members: Int
-    let score: Double
-}

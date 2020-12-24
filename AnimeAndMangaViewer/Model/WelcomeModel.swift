@@ -7,13 +7,9 @@
 
 import Foundation
 
-protocol ModelSpec: Codable {}
-protocol TopModelSpec: ModelSpec {}
-
-// MARK: - Welcome
-struct Welcome<Top: TopModelSpec>: ModelSpec {
+struct Welcome<T: Codable>: Decodable {
     let requestHash: String
     let requestCached: Bool
     let requestCacheExpiry: Int
-    let top: [Top]
+    let top: [T]
 }
