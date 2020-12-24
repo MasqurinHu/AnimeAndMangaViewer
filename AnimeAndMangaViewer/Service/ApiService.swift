@@ -24,7 +24,7 @@ struct ApiService {
             doneHandle(.failure(.invalidUrl(task.url)))
             return
         }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, timeoutInterval: 20)
         request.httpMethod = task.httpMethod.rawValue
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

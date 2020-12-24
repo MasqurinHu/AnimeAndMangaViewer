@@ -22,6 +22,11 @@ class ListVc: UIViewController {
     }
 
     private var viewModel: ContentViewModel?
+    private lazy var loadingView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(frame: view.frame)
+        view.addSubview(indicator)
+        return indicator
+    }()
 }
 
 extension ListVc {
@@ -61,10 +66,27 @@ private extension ListVc {
     }
 
     func bindViewModel() {
-        viewModel?.needReloadData = { [weak self] _ in
+        viewModel?.needReloadData = { [weak self] vcState in
             DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
+                switch vcState {
+                case .firstLoading:
+                    self?.loadingView.startAnimating()
+                case .loadDone:
+                    self?.loadingView.stopAnimating()
+                    self?.tableView.reloadData()
+                case .loadFail(let errorMsg):
+                    self?.loadingView.stopAnimating()
+                    self?.showAlert(msg: errorMsg)
+                }
             }
         }
+    }
+    
+    func showAlert(msg: String) {
+        let alert = UIAlertController(title: "錯誤", message: msg, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "確認", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+        
     }
 }
