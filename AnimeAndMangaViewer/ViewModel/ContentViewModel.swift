@@ -13,11 +13,12 @@ class ContentViewModel {
     private let repo = ApiRepository()
     private var data: [TopModel] = []
     private var isLoading: LoadState = LoadState.normal
-
+    private var retryIndex: Int?
+    
     var needReloadData:((ListVcState) -> ())? {
         didSet {
             reset()
-            loadData(page: .zero)
+            loadData(page: startIndex)
         }
     }
 
@@ -25,6 +26,12 @@ class ContentViewModel {
         self.model = model
         self.delegate = delegate
     }
+}
+
+extension ContentViewModel {
+    var numberOfRow: Int { data.count }
+    var offset: Int { 50 }
+    var startIndex: Int { 1 }
 
     func loadMore(indexPath: IndexPath) {
         let nextPartial = (indexPath.row / offset) + 2
@@ -32,14 +39,18 @@ class ContentViewModel {
             isLoading == .normal,
             nextPartial > data.count / offset
         else { return }
-        loadData(page: nextPartial)
+        if data.count == .zero {
+            loadData(page: startIndex)
+        } else {
+            loadData(page: nextPartial)
+        }
     }
-}
 
-extension ContentViewModel {
-    var numberOfRow: Int { data.count }
-    var offset: Int { 50 }
-
+    func retry() {
+        guard let retryIndex = retryIndex else { return }
+        loadData(page: retryIndex)
+    }
+    
     func subViewModel(indexPath: IndexPath) -> ContentTableViewCellViewModel {
         guard data.count > indexPath.row else {
             return ContentTableViewCellViewModel(model: TopModel.dummyModel, delegate: delegate)
@@ -66,12 +77,14 @@ private extension ContentViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let data):
+                self.retryIndex = nil
                 self.data += data
                 self.needReloadData?(ListVcState.loadDone)
                 if Float(data.count).truncatingRemainder(dividingBy: Float(self.offset)) != 0 {
                     self.isLoading = LoadState.finish
                 }
             case .failure(let error):
+                self.retryIndex = page
                 self.needReloadData?(ListVcState.loadFail(error.localizedDescription))
             }
             self.isLoading = LoadState.normal

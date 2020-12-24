@@ -85,8 +85,11 @@ private extension ListVc {
     func showAlert(msg: String) {
         let alert = UIAlertController(title: "錯誤", message: msg, preferredStyle: .alert)
         let ok = UIAlertAction(title: "確認", style: .cancel, handler: nil)
+        let retry = UIAlertAction(title: "重試", style: .default) { [weak self] _ in
+            self?.viewModel?.retry()
+        }
         alert.addAction(ok)
+        alert.addAction(retry)
         present(alert, animated: true, completion: nil)
-        
     }
 }
