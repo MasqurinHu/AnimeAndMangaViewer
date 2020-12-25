@@ -21,5 +21,5 @@ func getDummyTopModel() -> TopModel {
 }
 
 func getDummyContentTableViewCellViewModel() -> ContentTableViewCellViewModel {
-    ContentTableViewCellViewModel(model: getDummyTopModel(), delegate: nil)
+    ContentTableViewCellViewModel(model: getDummyTopModel(), dbRepo: DbRepository(dataSource: DbDataSource()), delegate: nil)
 }

@@ -52,11 +52,13 @@ extension ContentViewModel {
         loadData(page: retryIndex)
     }
 
-    func subViewModel(indexPath: IndexPath) -> ContentTableViewCellViewModel {
-        guard data.count > indexPath.row else {
-            return ContentTableViewCellViewModel(model: TopModel.dummyModel, delegate: delegate)
-        }
-        return ContentTableViewCellViewModel(model: data[indexPath.row], delegate: delegate)
+    func subViewModel(indexPath: IndexPath) -> ContentTableViewCellViewModel? {
+        guard data.count > indexPath.row else { return nil }
+        return ContentTableViewCellViewModel(
+            model: data[indexPath.row],
+            dbRepo: DbRepository(dataSource: DbDataSource()),
+            delegate: delegate
+        )
     }
 }
 

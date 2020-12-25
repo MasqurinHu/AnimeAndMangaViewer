@@ -32,19 +32,19 @@ class ContentTableViewCell: UITableViewCell {
 
 extension ContentTableViewCell {
 
-    func setupViewModel(_ viewModel: ContentTableViewCellViewModel) {
+    func setupViewModel(_ viewModel: ContentTableViewCellViewModel?) {
         self.viewModel = viewModel
-        viewModel.isFavorite = { [weak self] isFavorite in
+        viewModel?.isFavorite = { [weak self] isFavorite in
             let title: String = isFavorite ? "favorite" : "unfavorite"
             self?.favoriteBtn.setTitle(title, for: .normal)
         }
-        img.kf.setImage(with: viewModel.imgUrl)
-        title.text = viewModel.title
-        rank.text = viewModel.rank
-        startDate.text = viewModel.startDate
-        endDate.text = viewModel.endDate
-        type.text = viewModel.type
-        urlBtn.setTitle(viewModel.urlString, for: .normal)
-        malId.text = viewModel.malId
+        img.kf.setImage(with: viewModel?.imgUrl)
+        title.text = viewModel?.title
+        rank.text = viewModel?.rank
+        startDate.text = viewModel?.startDate
+        endDate.text = viewModel?.endDate
+        type.text = viewModel?.type
+        urlBtn.setTitle(viewModel?.urlString, for: .normal)
+        malId.text = viewModel?.malId
     }
 }
