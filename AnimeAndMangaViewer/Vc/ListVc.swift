@@ -59,6 +59,19 @@ extension ListVc: UITableViewDataSource {
     }
 }
 
+extension ListVc: ContentTableViewCellViewModelDelegate {
+
+    func showWebView(url: URL?) {
+        let vc = WebVc()
+        vc.url = url
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func showDbAlert(msg: String) {
+        showAlert(msg: msg)
+    }
+}
+
 private extension ListVc {
 
     func setupTableView() {

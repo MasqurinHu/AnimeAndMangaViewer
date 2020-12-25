@@ -9,6 +9,7 @@ import Foundation
 
 protocol ContentTableViewCellViewModelDelegate: AnyObject {
     func showWebView(url: URL?)
+    func showDbAlert(msg: String)
 }
 
 class ContentTableViewCellViewModel {
@@ -59,8 +60,8 @@ extension ContentTableViewCellViewModel {
             switch result {
             case .success(let isFavorite):
                 self?.isFavorite?(isFavorite)
-            case .failure:
-                break
+            case .failure(let error):
+                self?.delegate?.showDbAlert(msg: error.localizedDescription)
             }
         }
     }
