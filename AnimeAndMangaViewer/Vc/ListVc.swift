@@ -31,7 +31,7 @@ class ListVc: UIViewController {
 
 extension ListVc {
 
-    func setupViewModel(_ viewModel: ContentViewModel) {
+    func setupViewModel(_ viewModel: ContentViewModel?) {
         self.viewModel = viewModel
     }
 }
@@ -49,7 +49,9 @@ extension ListVc: UITableViewDataSource {
             return UITableViewCell()
         }
         let subViewModel = viewModel.subViewModel(indexPath: indexPath)
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: subViewModel.cellId, for: indexPath) as? ContentTableViewCell else {
+        guard
+            let cellId = subViewModel?.cellId,
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? ContentTableViewCell else {
             return UITableViewCell()
         }
         cell.setupViewModel(subViewModel)

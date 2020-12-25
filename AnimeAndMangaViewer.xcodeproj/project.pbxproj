@@ -24,6 +24,7 @@
 		45D963052594EE4D00D3974D /* ApiDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D963042594EE4D00D3974D /* ApiDataSource.swift */; };
 		45D9630C2594F17900D3974D /* Top_anime_1_upcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = 45D9630B2594F17900D3974D /* Top_anime_1_upcoming.json */; };
 		45D963182594FC9500D3974D /* Top_anime_1_upcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = 45D9630B2594F17900D3974D /* Top_anime_1_upcoming.json */; };
+		86C094B32595EB370025FF29 /* ContentTableViewCellViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C094B22595EB370025FF29 /* ContentTableViewCellViewModelTest.swift */; };
 		86F760952593355700CAEF1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760942593355700CAEF1A /* AppDelegate.swift */; };
 		86F760972593355700CAEF1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760962593355700CAEF1A /* SceneDelegate.swift */; };
 		86F760992593355700CAEF1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F760982593355700CAEF1A /* ViewController.swift */; };
@@ -47,6 +48,9 @@
 		86F7612C259598D800CAEF1A /* ApiRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F7612B259598D800CAEF1A /* ApiRepositoryTest.swift */; };
 		86F7614025959C0B00CAEF1A /* DummyTopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F7613F25959C0B00CAEF1A /* DummyTopModel.swift */; };
 		86F761472595BF1E00CAEF1A /* ContentViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F761462595BF1D00CAEF1A /* ContentViewModelTest.swift */; };
+		86F761512595CD1600CAEF1A /* DbRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F761502595CD1600CAEF1A /* DbRepository.swift */; };
+		86F761552595D06A00CAEF1A /* DbDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F761542595D06A00CAEF1A /* DbDataSource.swift */; };
+		86F7615B2595E4A100CAEF1A /* DummyDbDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F7615A2595E4A000CAEF1A /* DummyDbDataSourceTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,7 @@
 		45D962F12594182400D3974D /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		45D963042594EE4D00D3974D /* ApiDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDataSource.swift; sourceTree = "<group>"; };
 		45D9630B2594F17900D3974D /* Top_anime_1_upcoming.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Top_anime_1_upcoming.json; sourceTree = "<group>"; };
+		86C094B22595EB370025FF29 /* ContentTableViewCellViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCellViewModelTest.swift; sourceTree = "<group>"; };
 		86F760912593355700CAEF1A /* AnimeAndMangaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeAndMangaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F760942593355700CAEF1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86F760962593355700CAEF1A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +125,9 @@
 		86F7612B259598D800CAEF1A /* ApiRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRepositoryTest.swift; sourceTree = "<group>"; };
 		86F7613F25959C0B00CAEF1A /* DummyTopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTopModel.swift; sourceTree = "<group>"; };
 		86F761462595BF1D00CAEF1A /* ContentViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTest.swift; sourceTree = "<group>"; };
+		86F761502595CD1600CAEF1A /* DbRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRepository.swift; sourceTree = "<group>"; };
+		86F761542595D06A00CAEF1A /* DbDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDataSource.swift; sourceTree = "<group>"; };
+		86F7615A2595E4A000CAEF1A /* DummyDbDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDbDataSourceTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				45D963042594EE4D00D3974D /* ApiDataSource.swift */,
+				86F761542595D06A00CAEF1A /* DbDataSource.swift */,
 			);
 			path = DataSouce;
 			sourceTree = "<group>";
@@ -335,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				86F7610725943AAC00CAEF1A /* ApiRepository.swift */,
+				86F761502595CD1600CAEF1A /* DbRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -343,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				86F7611025958D5B00CAEF1A /* ApiDataSourceTest.swift */,
+				86F7615A2595E4A000CAEF1A /* DummyDbDataSourceTest.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -367,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				86F761462595BF1D00CAEF1A /* ContentViewModelTest.swift */,
+				86C094B22595EB370025FF29 /* ContentTableViewCellViewModelTest.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -516,6 +528,7 @@
 			files = (
 				45D962C92593E75600D3974D /* ListVc.swift in Sources */,
 				86F760992593355700CAEF1A /* ViewController.swift in Sources */,
+				86F761552595D06A00CAEF1A /* DbDataSource.swift in Sources */,
 				86F760F725934FAA00CAEF1A /* JikanEnum.swift in Sources */,
 				86F760DD2593437F00CAEF1A /* TaskSpec.swift in Sources */,
 				86F760C9259339C900CAEF1A /* WelcomeModel.swift in Sources */,
@@ -529,6 +542,7 @@
 				86F760E2259344C000CAEF1A /* ApiService.swift in Sources */,
 				86F760E825934AF600CAEF1A /* TopTask.swift in Sources */,
 				45D962ED2594159F00D3974D /* SubTypeVc.swift in Sources */,
+				86F761512595CD1600CAEF1A /* DbRepository.swift in Sources */,
 				45D962F22594182400D3974D /* ContentModel.swift in Sources */,
 				45D962D82593EB4900D3974D /* ContentTableViewCellViewModel.swift in Sources */,
 				86F7610825943AAC00CAEF1A /* ApiRepository.swift in Sources */,
@@ -542,9 +556,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F7615B2595E4A100CAEF1A /* DummyDbDataSourceTest.swift in Sources */,
 				86F7614025959C0B00CAEF1A /* DummyTopModel.swift in Sources */,
 				86F7612C259598D800CAEF1A /* ApiRepositoryTest.swift in Sources */,
 				86F760AC2593355A00CAEF1A /* AnimeAndMangaViewerTests.swift in Sources */,
+				86C094B32595EB370025FF29 /* ContentTableViewCellViewModelTest.swift in Sources */,
 				86F761192595900800CAEF1A /* ApiService.swift in Sources */,
 				86F761472595BF1E00CAEF1A /* ContentViewModelTest.swift in Sources */,
 				86F761252595904300CAEF1A /* JikanTask.swift in Sources */,

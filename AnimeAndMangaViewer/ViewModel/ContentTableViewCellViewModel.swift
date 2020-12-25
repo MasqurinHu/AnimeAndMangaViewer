@@ -14,16 +14,19 @@ protocol ContentTableViewCellViewModelDelegate: AnyObject {
 class ContentTableViewCellViewModel {
     var isFavorite: ((Bool) -> Void)? {
         didSet {
-            isFavorite?(favoriteStore)
+            isFavorite?(dbRepo.fetchFavorite(model: model))
         }
     }
-    init(model: TopModel, delegate: ContentTableViewCellViewModelDelegate?) {
+    init(model: TopModel,
+         dbRepo: DbRepository,
+         delegate: ContentTableViewCellViewModelDelegate?) {
         self.model = model
         self.delegate = delegate
+        self.dbRepo = dbRepo
     }
 
     private let model: TopModel
-    private var favoriteStore = false
+    private let dbRepo: DbRepository
     private weak var delegate: ContentTableViewCellViewModelDelegate?
 }
 
@@ -52,8 +55,14 @@ extension ContentTableViewCellViewModel {
     }
 
     func favoriteAction() {
-        favoriteStore = !favoriteStore
-        isFavorite?(favoriteStore)
+        dbRepo.setFavorite(!dbRepo.fetchFavorite(model: model), model: model) { [weak self] result in
+            switch result {
+            case .success(let isFavorite):
+                self?.isFavorite?(isFavorite)
+            case .failure:
+                break
+            }
+        }
     }
 
     func urlAction() {
