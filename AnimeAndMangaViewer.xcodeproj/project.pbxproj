@@ -49,6 +49,7 @@
 		86F761472595BF1E00CAEF1A /* ContentViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F761462595BF1D00CAEF1A /* ContentViewModelTest.swift */; };
 		86F761512595CD1600CAEF1A /* DbRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F761502595CD1600CAEF1A /* DbRepository.swift */; };
 		86F761552595D06A00CAEF1A /* DbDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F761542595D06A00CAEF1A /* DbDataSource.swift */; };
+		86F7615B2595E4A100CAEF1A /* DummyDbDataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F7615A2595E4A000CAEF1A /* DummyDbDataSourceTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		86F761462595BF1D00CAEF1A /* ContentViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTest.swift; sourceTree = "<group>"; };
 		86F761502595CD1600CAEF1A /* DbRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRepository.swift; sourceTree = "<group>"; };
 		86F761542595D06A00CAEF1A /* DbDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDataSource.swift; sourceTree = "<group>"; };
+		86F7615A2595E4A000CAEF1A /* DummyDbDataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDbDataSourceTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				86F7611025958D5B00CAEF1A /* ApiDataSourceTest.swift */,
+				86F7615A2595E4A000CAEF1A /* DummyDbDataSourceTest.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86F7615B2595E4A100CAEF1A /* DummyDbDataSourceTest.swift in Sources */,
 				86F7614025959C0B00CAEF1A /* DummyTopModel.swift in Sources */,
 				86F7612C259598D800CAEF1A /* ApiRepositoryTest.swift in Sources */,
 				86F760AC2593355A00CAEF1A /* AnimeAndMangaViewerTests.swift in Sources */,
