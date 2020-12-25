@@ -13,7 +13,7 @@ enum DbError: Error {
 
 protocol DbDataSourceSpec {
     func fetchFavorite(model: TopModel) -> Bool
-    func setFavorite(_ bool: Bool, model: TopModel, doneHandle: @escaping ((Result<Bool, Error>) -> Void))
+    func setFavorite(_ isFavorite: Bool, model: TopModel, doneHandle: @escaping ((Result<Bool, Error>) -> Void))
 }
 
 class DbDataSource {
@@ -52,5 +52,21 @@ private extension DbDataSource {
             let dbModel = try? decoder.decode(FavoriteDbModel.self, from: data)
         else { return FavoriteDbModel() }
         return dbModel
+    }
+}
+
+class DummyDbDataSource {
+    var db: [Int: Bool] = [:]
+}
+
+extension DummyDbDataSource: DbDataSourceSpec {
+
+    func fetchFavorite(model: TopModel) -> Bool {
+        db[model.malId] ?? false
+    }
+
+    func setFavorite(_ isFavorite: Bool, model: TopModel, doneHandle: @escaping ((Result<Bool, Error>) -> Void)) {
+        db[model.malId] = isFavorite
+        doneHandle(.success(isFavorite))
     }
 }
