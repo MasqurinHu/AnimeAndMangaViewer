@@ -11,7 +11,7 @@ protocol JikanTaskSpec: TaskSpec {
 }
 
 extension JikanTaskSpec {
-    var domain: String { "private-anon-60bd2f9fda-jikan.apiary-proxy.com" }
+    var domain: String { "https://private-anon-60bd2f9fda-jikan.apiary-proxy.com" }
     var version: String { "/v3" }
     var url: String { domain + version + reference + endPoint }
 }

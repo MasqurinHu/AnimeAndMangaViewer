@@ -14,41 +14,51 @@ protocol ContentTableViewCellViewModelDelegate: AnyObject {
 class ContentTableViewCellViewModel {
     var isFavorite: ((Bool) -> Void)? {
         didSet {
-            isFavorite?(favoiteStore)
+            isFavorite?(favoriteStore)
         }
     }
     init(model: TopModel, delegate: ContentTableViewCellViewModelDelegate?) {
         self.model = model
         self.delegate = delegate
     }
-    
+
     private let model: TopModel
-    private var favoiteStore = false
+    private var favoriteStore = false
     private weak var delegate: ContentTableViewCellViewModelDelegate?
+}
+
+extension ContentTableViewCellViewModel: Equatable {
+    static func == (lhs: ContentTableViewCellViewModel, rhs: ContentTableViewCellViewModel) -> Bool {
+        lhs.model == rhs.model
+    }
 }
 
 extension ContentTableViewCellViewModel {
     static var cellType: AnyClass? { ContentTableViewCell.self }
     static var cellId: String { "ContentTableViewCell" }
-    
+
     var cellType: AnyClass? { ContentTableViewCell.self }
     var cellId: String { "ContentTableViewCell" }
-    
-    
-    var imgUrl: URL? { model.imageURL }
-    var title: String { model.title }
-    var rank: String { "\(model.rank)" }
-    var startDate: String? { model.startDate }
-    var endDate: String? { model.endDate }
-    var type: String { model.type }
-    var urlString: String? { model.url?.absoluteString }
-    
-    func favoriteAction() {
-        favoiteStore = !favoiteStore
-        isFavorite?(favoiteStore)
+    var title: String { "title: " + model.title }
+    var rank: String { "rank: \(model.rank)" }
+    var startDate: String { "startDate: " + (model.startDate ?? "--") }
+    var endDate: String { "endDate: " + (model.endDate ?? "--") }
+    var type: String { "type: " + model.type }
+    var urlString: String? { model.url }
+    var malId: String { "malId: \(model.malId)" }
+    var imgUrl: URL? {
+        guard let string = model.imageUrl else { return nil }
+        return URL(string: string)
     }
-    
+
+    func favoriteAction() {
+        favoriteStore = !favoriteStore
+        isFavorite?(favoriteStore)
+    }
+
     func urlAction() {
-        delegate?.showWebView(url: model.url)
+        guard let string = model.url?.addingPercentEncoding(withAllowedCharacters: .alphanumerics)?.removingPercentEncoding else { return }
+        let url = URL(string: string)
+        delegate?.showWebView(url: url)
     }
 }

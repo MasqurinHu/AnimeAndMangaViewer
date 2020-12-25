@@ -9,7 +9,7 @@ import Foundation
 
 class SubTypeViewModel {
     let topType: JikanType
-    
+
     init(type: JikanType) {
         topType = type
     }
@@ -24,7 +24,7 @@ extension SubTypeViewModel {
             return JikanSubtypeManga.allCases.count
         }
     }
-    
+
     func subTypeTitle(indexPath: IndexPath) -> String {
         let titleList: [String]
         switch topType {
@@ -36,7 +36,7 @@ extension SubTypeViewModel {
         guard titleList.count > indexPath.row else { return "" }
         return titleList[indexPath.row]
     }
-    
+
     func getContentModel(indexPath: IndexPath) -> ContentModel? {
         let pathList: [PathType]
         switch topType {

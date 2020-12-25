@@ -5,15 +5,13 @@
 //  Created by 五加一 on 2020/12/23.
 //
 
-struct TopTaskSpec: JikanTaskSpec {
-    var endPoint: String
-    var httpMethod: HttpMethod
-
-    let type: JikanType
+struct TopTask: JikanTaskSpec {
+    let model: ContentModel
     let page: Int
-
 }
 
-extension TopTaskSpec {
+extension TopTask {
     var reference: String { "/" + JikanReference.top.rawValue }
+    var httpMethod: HttpMethod { .get }
+    var endPoint: String { model.type.getPath + "/\(page)" + model.subType.getPath }
 }

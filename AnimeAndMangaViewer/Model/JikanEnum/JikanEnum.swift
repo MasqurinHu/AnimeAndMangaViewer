@@ -15,18 +15,18 @@ protocol PathType {
 
 enum JikanType: String, CaseIterable, PathType {
     case anime , manga
-    
+
     var getPath: String { "/" + rawValue }
 }
 
 enum JikanSubtypeAnime: String, CaseIterable, PathType  {
     case airing, upcoming, tv, movie, ova, special
-    
+
     var getPath: String { "/" + rawValue }
 }
 
 enum JikanSubtypeManga: String, CaseIterable, PathType  {
     case manga, novels, oneshots, doujin, manhwa, manhua
-    
+
     var getPath: String { "/" + rawValue }
 }

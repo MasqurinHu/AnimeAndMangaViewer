@@ -9,22 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    
+
     private let viewModel = MainViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTableView()
     }
 }
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfType
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = viewModel.typeTitle(indexPath: indexPath)
@@ -33,7 +33,7 @@ extension ViewController: UITableViewDataSource {
 }
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let type = viewModel.getType(indexPath: indexPath) else { return }
         let vc = SubTypeVc(nibName: "SubTypeVc", bundle: nil)
@@ -45,7 +45,7 @@ extension ViewController: UITableViewDelegate {
 
 private extension ViewController {
     var cellId: String { "cellId" }
-    
+
     func setupTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.tableFooterView = UIView()
