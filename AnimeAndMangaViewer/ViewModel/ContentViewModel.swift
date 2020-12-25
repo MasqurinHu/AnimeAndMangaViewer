@@ -33,8 +33,6 @@ class ContentViewModel {
 
 extension ContentViewModel {
     var numberOfRow: Int { data.count }
-    var offset: Int { 50 }
-    var startIndex: Int { 1 }
 
     func loadMore(indexPath: IndexPath) {
         let nextPartial = (indexPath.row / offset) + 2
@@ -63,6 +61,8 @@ extension ContentViewModel {
 }
 
 private extension ContentViewModel {
+    var offset: Int { 50 }
+    var startIndex: Int { 1 }
 
     enum LoadState {
         case normal, loading, finish

@@ -27,6 +27,12 @@ class ContentTableViewCellViewModel {
     private weak var delegate: ContentTableViewCellViewModelDelegate?
 }
 
+extension ContentTableViewCellViewModel: Equatable {
+    static func == (lhs: ContentTableViewCellViewModel, rhs: ContentTableViewCellViewModel) -> Bool {
+        lhs.model == rhs.model
+    }
+}
+
 extension ContentTableViewCellViewModel {
     static var cellType: AnyClass? { ContentTableViewCell.self }
     static var cellId: String { "ContentTableViewCell" }

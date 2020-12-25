@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ListVcState {
+enum ListVcState: Equatable {
     case loading, loadDone, loadFail(String)
 }
 

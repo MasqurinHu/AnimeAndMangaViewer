@@ -19,3 +19,7 @@ func getDummyTopModel() -> TopModel {
         type: "TV",
         url: "https://myanimelist.net/anime/39617/Yakusoku_no_Neverland_2nd_Season")
 }
+
+func getDummyContentTableViewCellViewModel() -> ContentTableViewCellViewModel {
+    ContentTableViewCellViewModel(model: getDummyTopModel(), delegate: nil)
+}
