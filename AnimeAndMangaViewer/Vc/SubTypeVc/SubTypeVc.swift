@@ -37,18 +37,9 @@ extension SubTypeVc: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let model = viewModel?.getContentModel(indexPath: indexPath) else { return }
         let repo = ApiRepository(dataSource: ApiDataSource())
-        let contentViewModel = ContentViewModel(model: model, apiRepo: repo, delegate: self)
         let vc = ListVc(nibName: "ListVc", bundle: nil)
+        let contentViewModel = ContentViewModel(model: model, apiRepo: repo, delegate: vc)
         vc.setupViewModel(contentViewModel)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension SubTypeVc: ContentTableViewCellViewModelDelegate {
-    
-    func showWebView(url: URL?) {
-        let vc = WebVc()
-        vc.url = url
         navigationController?.pushViewController(vc, animated: true)
     }
 }

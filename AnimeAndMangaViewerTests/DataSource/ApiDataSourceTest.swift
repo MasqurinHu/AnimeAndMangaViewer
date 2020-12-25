@@ -29,10 +29,10 @@ class ApiDataSourceTest: XCTestCase {
                     case .failure(_):
                         break
                     }
-                    waitGatData.fulfill()
                 case .failure(_):
-                    waitGatData.fulfill()
+                    break
                 }
+                waitGatData.fulfill()
             })
         })
         wait(for: [waitGatData], timeout: 3)
