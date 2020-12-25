@@ -27,3 +27,4 @@ struct TopModel: Decodable {
         type: "TV", url: "https://myanimelist.net/anime/40852/Dr_Stone__Stone_Wars")
 }
 
+extension TopModel: Equatable {}

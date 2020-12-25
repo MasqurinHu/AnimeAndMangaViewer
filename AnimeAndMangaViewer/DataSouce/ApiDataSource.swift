@@ -34,7 +34,7 @@ struct DummyApiDataSource: ApiDataSourceSpec {
         doneHandle: @escaping ((Result<Data, NetworkError>) -> Void)) {
 
         guard
-            let path = Bundle.main.path(forResource: "Top_anime_8_upcoming", ofType: "json"),
+            let path = Bundle.main.path(forResource: "Top_anime_1_upcoming", ofType: "json"),
             let jsonString = try? String(contentsOfFile: path, encoding: .utf8),
             let jsonData = jsonString.data(using: .utf8) else {
             doneHandle(.failure(.invalidData))
